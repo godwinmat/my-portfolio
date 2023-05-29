@@ -89,23 +89,28 @@ const Header = () => {
             </ol>
 
             {openMenu && (
-                <aside className="flex md:hidden absolute w-full h-screen bg-transparent backdrop-blur-sm right-0 left-0 top-0 bottom-0 shadow-2xl shadow-background">
-                    <div className="w-1/2 h-screen self-end bg-transparent" />
-                    <nav className="w-1/2 h-screen bg-background duration-300 transition-all flex justify-center items-center">
+                <motion.aside
+                    className="flex md:hidden absolute w-full h-screen bg-transparent backdrop-blur-sm right-0 left-0 top-0 bottom-0 shadow-2xl shadow-background overflow-hidden"
+                    initial={{ opacity: 0, x: "50%" }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.3 }}
+                >
+                    <div className="w-[30%] h-screen self-end bg-transparent" />
+                    <nav className="w-[70%] h-screen bg-background flex justify-center items-center">
                         <ol className="text-slate-300 space-y-6 font-medium drawer-items">
-                            <li className="text-center cursor-pointer hover:text-primary">
+                            <li className="text-center cursor-pointer hover:text-primary transition-all duration-300 hover:-translate-y-1">
                                 <div className="text-primary">01.</div>
                                 About
                             </li>
-                            <li className="text-center cursor-pointer hover:text-primary">
+                            <li className="text-center cursor-pointer hover:text-primary transition-all duration-300 hover:-translate-y-1">
                                 <div className="text-primary">02.</div>
                                 Experience
                             </li>
-                            <li className="text-center cursor-pointer hover:text-primary">
+                            <li className="text-center cursor-pointer hover:text-primary transition-all duration-300 hover:-translate-y-1">
                                 <div className="text-primary">03.</div>
                                 Work
                             </li>
-                            <li className="text-center cursor-pointer hover:text-primary">
+                            <li className="text-center cursor-pointer hover:text-primary transition-all duration-300 hover:-translate-y-1">
                                 <div className="text-primary">04.</div>
                                 Contact
                             </li>
@@ -114,7 +119,7 @@ const Header = () => {
                             </li>
                         </ol>
                     </nav>
-                </aside>
+                </motion.aside>
             )}
         </nav>
     );

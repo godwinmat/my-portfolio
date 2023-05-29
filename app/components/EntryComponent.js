@@ -8,17 +8,17 @@ import Loading from "./Loading";
 const EntryComponent = ({ children }) => {
     const [loading, setLoading] = useState(true);
 
-    // useEffect(() => {
-    //     const timeout = setTimeout(() => {
-    //         setLoading(false);
-    //     }, 6000);
+    useEffect(() => {
+        const timeout = setTimeout(() => {
+            setLoading(false);
+        }, 2000);
 
-    //     return () => {
-    //         clearTimeout(timeout);
-    //     };
-    // }, []);
+        return () => {
+            clearTimeout(timeout);
+        };
+    }, []);
 
-    // if (loading) return <Loading />;
+    if (loading) return <Loading />;
 
     return (
         <>

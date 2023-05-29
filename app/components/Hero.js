@@ -9,7 +9,7 @@ const Hero = () => {
         <div className="h-screen flex items-center p-10 sm:p-12 md:p-24 lg:p-36 xl:p-56">
             <div className="">
                 <motion.p
-                    className="text-primary text-small-resp"
+                    className="text-primary text-small-resp py-3"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 6 * 0.1 }}
