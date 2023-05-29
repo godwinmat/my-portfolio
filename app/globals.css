@@ -1,3 +1,23 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.text-head-resp {
+    font-size: clamp(30px, 7vw, 60px);
+}
+
+.text-small-resp {
+    font-size: clamp(10px, 5vw, 18px);
+}
+
+.drawer-items {
+    font-size: clamp(16px, 4vw, 18px);
+}
+
+.drawer-items-small {
+    font-size: clamp(14px, 4vw, 14px);
+}
+
+.writing-rtl {
+    writing-mode: vertical-rl;
+}
