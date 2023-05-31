@@ -1,29 +1,67 @@
 "use client";
 
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import CustomButton from "./CustomButton";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { roboto } from "../utils/fonts";
 
 const Header = () => {
     const [openMenu, setOpenMenu] = useState(false);
-    const openMenuStyle = "before";
+    const [showShadow, setShowShadow] = useState(false);
+
+    useEffect(() => {
+        let prevScrollPos = window.scrollY;
+
+        const handleScroll = () => {
+            const currentScrollPos = window.scrollY;
+
+            if (prevScrollPos > currentScrollPos) {
+                // Scrolling up, show the header
+                document.getElementById("header").style.transform =
+                    "translateY(0)";
+            } else {
+                // Scrolling down, hide the header
+                document.getElementById("header").style.transform =
+                    "translateY(-100%)";
+            }
+
+            if (currentScrollPos === 0) {
+                setShowShadow(false);
+            } else {
+                setShowShadow(true);
+            }
+
+            prevScrollPos = currentScrollPos;
+        };
+
+        window.addEventListener("scroll", handleScroll);
+
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+        };
+    }, []);
 
     function onClick() {
         setOpenMenu(!openMenu);
     }
 
     return (
-        <nav className="bg-transparent h-[100px] sticky top-0 flex items-center px-9 sm:px-12 z-50 justify-between">
+        <header
+            id="header"
+            className={`${roboto.className} ${
+                showShadow ? "header-shadow" : ""
+            } bg-background h-[70px] w-full fixed top-0 flex items-center px-9 sm:px-12 justify-between transition-all duration-500 z-[1]`}
+        >
             <Image
                 src="/assets/logo2.png"
                 width={100}
                 height={100}
-                className=" -m-8 hover:-translate-x-1 hover:-translate-y-1 duration-200 cursor-pointer z-50"
+                className=" -m-8 hover:-translate-x-1 hover:-translate-y-1 duration-200 cursor-pointer"
             />
             <div
-                className="flex md:hidden w-8 h-6 relative justify-center items-center cursor-pointer z-50"
+                className="flex md:hidden w-8 h-6 relative justify-center items-center cursor-pointer"
                 onClick={onClick}
             >
                 <div
@@ -35,15 +73,17 @@ const Header = () => {
                 />
             </div>
 
-            <ol className="hidden md:flex items-center text-slate-300 space-x-8 font-medium drawer-items-small transition-all duration-500">
+            <ol className="hidden md:flex items-center text-slate-300 space-x-8 font-normal drawer-items-small transition-all duration-500">
                 <motion.li
                     className="text-center cursor-pointer hover:text-primary "
                     initial={{ opacity: 0, y: -20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0 * 0.1 }}
                 >
-                    <span className="text-primary">01. </span>
-                    About
+                    <Link href="#aboutme">
+                        <span className="text-primary">01. </span>
+                        About
+                    </Link>
                 </motion.li>
                 <motion.li
                     className="text-center cursor-pointer hover:text-primary "
@@ -69,8 +109,10 @@ const Header = () => {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 3 * 0.1 }}
                 >
-                    <span className="text-primary">04. </span>
-                    Contact
+                    <Link href="#contact">
+                        <span className="text-primary">04. </span>
+                        Contact
+                    </Link>
                 </motion.li>
                 <motion.li
                     initial={{ opacity: 0, y: -20 }}
@@ -99,8 +141,13 @@ const Header = () => {
                     <nav className="w-[70%] h-screen bg-background flex justify-center items-center">
                         <ol className="text-slate-300 space-y-6 font-medium drawer-items">
                             <li className="text-center cursor-pointer hover:text-primary transition-all duration-300 hover:-translate-y-1">
-                                <div className="text-primary">01.</div>
-                                About
+                                <Link
+                                    href="#aboutme"
+                                    onClick={() => setOpenMenu(false)}
+                                >
+                                    <div className="text-primary">01.</div>
+                                    About
+                                </Link>
                             </li>
                             <li className="text-center cursor-pointer hover:text-primary transition-all duration-300 hover:-translate-y-1">
                                 <div className="text-primary">02.</div>
@@ -111,17 +158,22 @@ const Header = () => {
                                 Work
                             </li>
                             <li className="text-center cursor-pointer hover:text-primary transition-all duration-300 hover:-translate-y-1">
-                                <div className="text-primary">04.</div>
-                                Contact
+                                <Link
+                                    href="#contact"
+                                    onClick={() => setOpenMenu(false)}
+                                >
+                                    <div className="text-primary">04.</div>
+                                    Contact
+                                </Link>
                             </li>
                             <li>
-                                <CustomButton buttonText="Resume" />
+                                <CustomButton>Resume</CustomButton>
                             </li>
                         </ol>
                     </nav>
                 </motion.aside>
             )}
-        </nav>
+        </header>
     );
 };
 

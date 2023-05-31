@@ -2,8 +2,9 @@
 
 import React, { useEffect, useState } from "react";
 import Header from "./Header";
-import EmailandSocials from "./EmailandSocials";
 import Loading from "./Loading";
+import EmailComponent from "./EmailComponent";
+import SocialComponent from "./SocialComponent";
 
 const EntryComponent = ({ children }) => {
     const [loading, setLoading] = useState(true);
@@ -24,7 +25,9 @@ const EntryComponent = ({ children }) => {
         <>
             <Header />
             {children}
-            <EmailandSocials />
+
+            <EmailComponent />
+            <SocialComponent />
         </>
     );
 };

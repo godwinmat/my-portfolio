@@ -3,13 +3,14 @@
 import React from "react";
 import CustomButton from "./CustomButton";
 import { motion } from "framer-motion";
+import { roboto } from "../utils/fonts";
 
 const Hero = () => {
     return (
-        <div className="h-screen flex items-center p-10 sm:p-12 md:p-24 lg:p-36 xl:p-56">
-            <div className="">
+        <div className="h-screen flex items-center px-10 sm:px-12 md:px-24 lg:px-36 container">
+            <div>
                 <motion.p
-                    className="text-primary text-small-resp py-3"
+                    className={`${roboto.className} text-primary text-small-resp py-2`}
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 6 * 0.1 }}
@@ -33,7 +34,7 @@ const Hero = () => {
                     I build things for the web.
                 </motion.h1>
                 <motion.p
-                    className="text-[14px] sm:text-base font-medium text-gray-400 py-6 max-w-lg"
+                    className="text-[14px] sm:text-base font-normal text-gray-400 py-6 max-w-lg"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 9 * 0.1 }}
@@ -43,15 +44,13 @@ const Hero = () => {
                     application design, I bring creativity and technical
                     expertise to every project.
                 </motion.p>
-                {/* <Link href="" className="border border-primary">
-                Check out my resume!
-            </Link> */}
+
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 10 * 0.1 }}
                 >
-                    <CustomButton buttonText="Check out my resume!" />
+                    <CustomButton>Check out my resume!</CustomButton>
                 </motion.div>
             </div>
         </div>

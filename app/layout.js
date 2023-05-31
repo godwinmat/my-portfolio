@@ -1,6 +1,4 @@
-import EmailandSocials from "./components/EmailandSocials";
 import EntryComponent from "./components/EntryComponent";
-import Header from "./components/Header";
 import "./globals.css";
 import { Poppins } from "next/font/google";
 
@@ -12,13 +10,14 @@ const poppins = Poppins({
 export const metadata = {
     title: "Matthew Godwin",
     description: "Portfolio",
+    themeColor: "#020c1b",
 };
 
 export default function RootLayout({ children }) {
     return (
         <html lang="en">
             <body
-                className={`${poppins.className} relative bg-background overflow-x-hidden`}
+                className={`${poppins.className} bg-background overflow-x-hidden transition-all duration-500`}
             >
                 <EntryComponent>{children}</EntryComponent>
             </body>

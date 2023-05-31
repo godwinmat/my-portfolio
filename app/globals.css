@@ -2,8 +2,24 @@
 @tailwind components;
 @tailwind utilities;
 
+.header-shadow {
+    box-shadow: 0 10px 30px -10px rgba(3, 44, 106, 0.7);
+}
+
 .text-head-resp {
     font-size: clamp(30px, 7vw, 60px);
+}
+
+.text-sub-resp {
+    font-size: clamp(25px, 5vw, 30px);
+}
+
+.text-num-resp {
+    font-size: clamp(16px, 4vw, 20px);
+}
+
+.text-getintouch-resp {
+    font-size: clamp(40px, 5vw, 60px);
 }
 
 .text-small-resp {
@@ -20,4 +36,25 @@
 
 .writing-rtl {
     writing-mode: vertical-rl;
+}
+
+/* For WebKit-based browsers */
+body::-webkit-scrollbar {
+    width: 0.7em;
+}
+
+body::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+body::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: #a8b2d155;
+    border: 3px solid #020c1b;
+}
+
+/* For Firefox */
+body {
+    scrollbar-width: thin;
+    scrollbar-color: #020c1b #a8b2d155;
 }
