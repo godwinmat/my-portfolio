@@ -41,7 +41,7 @@ const GetInTouch = () => {
                 animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
                 transition={{ duration: 0.7, delay: 2 * 0.2 }}
             >
-                I am currently looking for new opportunities if you have any, my
+                I am currently looking for new opportunities. If you have any, my
                 inbox is always open. Whether you have a question or just want
                 to say hi, I'll try my best to get back to you!
             </motion.p>
