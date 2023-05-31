@@ -18,6 +18,7 @@ const AboutMe = () => {
         "Redux Toolkit",
         "Whatsapp Cloud API Integration",
         "OpenAI API Integration",
+        "Discord.js"
     ];
 
     return (
