@@ -14,6 +14,8 @@ const AboutMe = () => {
         "TailwindCSS",
         "React Native",
         "Firebase",
+        "MongoDB",
+        "Redux Toolkit",
         "Whatsapp Cloud API Integration",
         "OpenAI API Integration",
     ];
@@ -37,7 +39,7 @@ const AboutMe = () => {
             <div className="flex flex-col md:flex-row space-y-9 md:space-y-0 md:space-x-9 items-start my-5">
                 <div className="text-slate-400 text-base w-full md:w-[60%] flex-shrink-0">
                     <p className="py-3">
-                        Hello, I'm Matthew Godwin, a passionate and dedicated web developer from Nigeria. I'm currently pursuing a B.Sc in Computer Science at the National Open University of Nigeria. With a strong enthusiasm for creating captivating digital experiences, I strive to deliver innovative solutions that leave a lasting impression. I have almost 3 years of experience in Python, React, React Native, Nodejs, MongoDB, and other related technologies.
+                        Hello, I'm Matthew, a passionate and dedicated web developer from Nigeria. I'm currently pursuing a B.Sc in Computer Science at the National Open University of Nigeria. With a strong enthusiasm for creating captivating digital experiences, I strive to deliver innovative solutions that leave a lasting impression. I have almost 3 years of experience in Python, React, React Native, Nodejs, MongoDB, and other related technologies.
 
 
                     </p>
