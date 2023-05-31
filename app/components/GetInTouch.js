@@ -10,12 +10,12 @@ import { useInView } from "react-intersection-observer";
 
 const GetInTouch = () => {
     const [ref, inView] = useInView();
-    console.log(inView);
+
 
     return (
         <div
             id="contact"
-            className="relative px-10 sm:px-12 md:px-24 lg:px-36 xl:px-56 min-h-screen flex flex-col items-center container justify-center"
+            className="relative px-10 sm:px-12 md:px-24 lg:px-36 xl:px-56 py-20 flex flex-col items-center container justify-center"
         >
             <motion.span
                 className={`${roboto.className} 
@@ -41,7 +41,7 @@ const GetInTouch = () => {
                 animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
                 transition={{ duration: 0.7, delay: 2 * 0.2 }}
             >
-                Although I'm not currently looking for any new opportunities, my
+                I am currently looking for new opportunities if you have any, my
                 inbox is always open. Whether you have a question or just want
                 to say hi, I'll try my best to get back to you!
             </motion.p>
@@ -49,7 +49,7 @@ const GetInTouch = () => {
                 Say Hello
             </CustomButton>
             <motion.div
-                className="absolute bottom-10 flex flex-col items-center"
+                className="mt-20 flex flex-col items-center"
                 initial={{ opacity: 0, y: 40 }}
                 animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
                 transition={{ duration: 0.7, delay: 3 * 0.2 }}
@@ -106,7 +106,7 @@ const GetInTouch = () => {
                     }
                     transition={{ duration: 0.7, delay: 4 * 0.2 }}
                 >
-                    <Link href="https://v4.brittanychiang.com">
+                    <Link href="https://v4.brittanychiang.com" target="_blank">
                         Inspired by Brittany Chiang
                     </Link>
                 </motion.p>
