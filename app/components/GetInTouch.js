@@ -26,7 +26,7 @@ const GetInTouch = () => {
                 04. What's Next?
             </motion.span>
             <motion.h1
-                className="text-2xl font-bold text-sub-resp text-slate-300 pr-5 text-getintouch-resp"
+                className="text-2xl py-2 font-bold text-sub-resp text-slate-300 pr-5 text-getintouch-resp"
                 initial={{ opacity: 0, y: 40 }}
                 animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
                 transition={{ duration: 0.7, delay: 1 * 0.2 }}
