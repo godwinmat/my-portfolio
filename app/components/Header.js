@@ -61,7 +61,7 @@ const Header = () => {
                 className=" -m-8 hover:-translate-x-1 hover:-translate-y-1 duration-200 cursor-pointer"
             />
             <div
-                className="flex md:hidden w-8 h-6 relative justify-center items-center cursor-pointer"
+                className="flex md:hidden w-8 h-6 relative justify-center items-center cursor-pointer z-10"
                 onClick={onClick}
             >
                 <div
