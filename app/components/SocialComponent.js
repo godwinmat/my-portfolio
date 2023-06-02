@@ -2,6 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { FiGithub, FiInstagram, FiLinkedin, FiTwitter } from "react-icons/fi";
+import { BsWhatsapp } from "react-icons/bs";
 
 const SocialComponent = () => {
     return (
@@ -39,6 +40,11 @@ const SocialComponent = () => {
                         target="_blank"
                     >
                         <FiInstagram className="text-slate-400 text-xl cursor-pointer hover:text-primary hover:-translate-y-2 transition-all duration-500" />
+                    </Link>
+                </li>
+                <li>
+                    <Link href="https://wa.me/+2349061868349" target="_blank">
+                        <BsWhatsapp className="text-slate-400 text-xl cursor-pointer hover:text-primary hover:-translate-y-2 transition-all duration-500" />
                     </Link>
                 </li>
             </ul>
