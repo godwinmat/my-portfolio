@@ -12,7 +12,7 @@ const GetInTouch = () => {
     const [ref, inView] = useInView();
 
     return (
-        <div
+        <section
             id="contact"
             className="relative px-10 sm:px-12 md:px-24 lg:px-36 xl:px-56 py-20 flex flex-col items-center container justify-center"
         >
@@ -110,7 +110,7 @@ const GetInTouch = () => {
                     </Link>
                 </motion.p>
             </motion.div>
-        </div>
+        </section>
     );
 };
 export default GetInTouch;

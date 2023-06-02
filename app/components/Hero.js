@@ -10,7 +10,7 @@ const Hero = () => {
     const [ref, inView] = useInView();
 
     return (
-        <div className="h-screen flex items-center px-10 sm:px-12 md:px-24 lg:px-36 container">
+        <section className="h-screen flex items-center px-10 sm:px-12 md:px-24 lg:px-36 container">
             <div>
                 <motion.p
                     className={`${roboto.className} text-primary text-small-resp py-2`}
@@ -67,7 +67,7 @@ const Hero = () => {
                     <CustomButton>Check out my resume!</CustomButton>
                 </motion.div>
             </div>
-        </div>
+        </section>
     );
 };
 

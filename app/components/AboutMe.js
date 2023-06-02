@@ -27,7 +27,7 @@ const AboutMe = () => {
     ];
 
     return (
-        <div
+        <section
             id="aboutme"
             className="px-10 sm:px-12 md:px-24 lg:px-36 xl:px-56 min-h-screen container flex flex-col justify-center items-center"
         >
@@ -45,7 +45,7 @@ const AboutMe = () => {
                     </span>
                     About Me
                 </h1>
-                <div className="flex-1 md:w-32 md:flex-initial h-[1px] bg-white/20" />
+                <div className="flex-1 md:w-32  h-[1px] bg-white/20" />
             </motion.div>
             <motion.div className="flex flex-col md:flex-row space-y-9 md:space-y-0 md:space-x-9 items-start my-5">
                 <div className="text-slate-400 text-base w-full md:w-[60%] flex-shrink-0">
@@ -138,7 +138,7 @@ const AboutMe = () => {
                     </div>
                 </motion.div>
             </motion.div>
-        </div>
+        </section>
     );
 };
 
