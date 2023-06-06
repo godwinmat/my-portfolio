@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import CustomButton from "./CustomButton";
 import { FiGithub, FiInstagram, FiLinkedin, FiTwitter } from "react-icons/fi";
 import Link from "next/link";
@@ -11,6 +11,30 @@ import { BsWhatsapp } from "react-icons/bs";
 
 const GetInTouch = () => {
     const [ref, inView] = useInView();
+    const [links, setLinks] = useState({});
+
+    async function getLinks() {
+        const response = await fetch("/api/links", {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+            },
+        });
+
+        const { links } = await response.json();
+
+        let newLinks = {};
+
+        links?.forEach((link) => {
+            newLinks[link.title] = { id: link.id, url: link.url };
+        });
+
+        setLinks(newLinks);
+    }
+
+    useEffect(() => {
+        getLinks();
+    }, []);
 
     return (
         <section
@@ -57,7 +81,7 @@ const GetInTouch = () => {
                 <ul className="flex md:hidden items-center space-x-10 pb-5">
                     <li>
                         <Link
-                            href="https://github.com/godwinmat"
+                            href={links?.["GitHub"]?.url || ""}
                             target="_blank"
                         >
                             <FiGithub className="text-slate-400 text-xl cursor-pointer hover:text-primary hover:-translate-y-2 transition-all duration-500" />
@@ -65,7 +89,7 @@ const GetInTouch = () => {
                     </li>
                     <li>
                         <Link
-                            href="https://twitter.com/matthewgodwin39"
+                            href={links?.["Twitter"]?.url || ""}
                             target="_blank"
                         >
                             <FiTwitter className="text-slate-400 text-xl cursor-pointer hover:text-primary hover:-translate-y-2 transition-all duration-500" />
@@ -73,7 +97,7 @@ const GetInTouch = () => {
                     </li>
                     <li>
                         <Link
-                            href="https://www.linkedin.com/in/matthew-godwin-479554209/"
+                            href={links?.["LinkedIn"]?.url || ""}
                             target="_blank"
                         >
                             <FiLinkedin className="text-slate-400 text-xl cursor-pointer hover:text-primary hover:-translate-y-2 transition-all duration-500" />
@@ -81,7 +105,7 @@ const GetInTouch = () => {
                     </li>
                     <li>
                         <Link
-                            href="https://instagram.com/_godwinmat_"
+                            href={links?.["Instagram"]?.url || ""}
                             target="_blank"
                         >
                             <FiInstagram className="text-slate-400 text-xl cursor-pointer hover:text-primary hover:-translate-y-2 transition-all duration-500" />
@@ -89,7 +113,7 @@ const GetInTouch = () => {
                     </li>
                     <li>
                         <Link
-                            href="https://wa.me/+2349061868349"
+                            href={links?.["Whatsapp"]?.url || ""}
                             target="_blank"
                         >
                             <BsWhatsapp className="text-slate-400 text-xl cursor-pointer hover:text-primary hover:-translate-y-2 transition-all duration-500" />
