@@ -1,34 +1,52 @@
 "use client";
 
 import Image from "next/image";
-import React from "react";
+import { useEffect, useState } from "react";
 import { roboto } from "../utils/fonts";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
 const AboutMe = () => {
+    const [technologies, setTechnologies] = useState([]);
     const [ref, inView] = useInView({ triggerOnce: true });
-    const technologies = [
-        "Python",
-        "JavaScript",
-        "Node.js",
-        "Express",
-        "HTML & CSS",
-        "React",
-        "Next.js",
-        "TailwindCSS",
-        "React Native",
-        "Firebase",
-        "MongoDB",
-        "Redux Toolkit",
-        "Whatsapp Cloud API Integration",
-        "OpenAI API Integration",
-        "Discord.js",
-    ];
+    // const technologies = [
+    //     "Python",
+    //     "JavaScript",
+    //     "Node.js",
+    //     "Express",
+    //     "HTML & CSS",
+    //     "React",
+    //     "Next.js",
+    //     "TailwindCSS",
+    //     "React Native",
+    //     "Firebase",
+    //     "MongoDB",
+    //     "Redux Toolkit",
+    //     "Whatsapp Cloud API Integration",
+    //     "OpenAI API Integration",
+    //     "Discord.js",
+    // ];
+
+    async function getSkills() {
+        const response = await fetch("/api/skills", {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+            },
+        });
+
+        const { skills } = await response.json();
+
+        setTechnologies(skills);
+    }
+
+    useEffect(() => {
+        getSkills();
+    }, []);
 
     return (
         <section
-            id="aboutme"
+            id="about"
             className="px-10 sm:px-12 md:px-24 lg:px-36 xl:px-56 min-h-screen container flex flex-col justify-center items-center"
         >
             <motion.div
@@ -107,12 +125,12 @@ const AboutMe = () => {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5, delay: 4 * 0.1 }}
                     >
-                        {technologies.map((technology, index) => (
+                        {technologies?.map((technology, index) => (
                             <li
-                                key={index}
+                                key={technology.id}
                                 className="text-[13px] before:content-['▹'] before:pr-2 before:text-primary"
                             >
-                                {technology}
+                                {technology.title}
                             </li>
                         ))}
                     </motion.ul>

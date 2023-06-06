@@ -6,6 +6,7 @@ const CustomButton = ({ href = "", children }) => {
     return (
         <Link
             href={href}
+            target="_blank"
             className="my-4 inline-block bg-primary rounded-[4px]"
         >
             <button

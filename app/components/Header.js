@@ -6,10 +6,13 @@ import CustomButton from "./CustomButton";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { roboto } from "../utils/fonts";
+import { usePathname } from "next/navigation";
 
 const Header = () => {
+    const pathname = usePathname();
     const [openMenu, setOpenMenu] = useState(false);
     const [showShadow, setShowShadow] = useState(false);
+    const navigation = ["About", "Experience", "Work", "Contact"];
 
     useEffect(() => {
         let prevScrollPos = window.scrollY;
@@ -74,53 +77,31 @@ const Header = () => {
             </div>
 
             <ol className="hidden md:flex items-center text-slate-300 space-x-8 font-normal drawer-items-small transition-all duration-500">
-                <motion.li
-                    className="text-center cursor-pointer hover:text-primary "
-                    initial={{ opacity: 0, y: -20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0 * 0.1 }}
-                >
-                    <Link href="#aboutme">
-                        <span className="text-primary">01. </span>
-                        About
-                    </Link>
-                </motion.li>
-                <motion.li
-                    className="text-center cursor-pointer hover:text-primary "
-                    initial={{ opacity: 0, y: -20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 1 * 0.1 }}
-                >
-                    <span className="text-primary">02. </span>
-                    Experience
-                </motion.li>
-                <motion.li
-                    className="text-center cursor-pointer hover:text-primary "
-                    initial={{ opacity: 0, y: -20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 2 * 0.1 }}
-                >
-                    <span className="text-primary">03. </span>
-                    Work
-                </motion.li>
-                <motion.li
-                    className="text-center cursor-pointer hover:text-primary "
-                    initial={{ opacity: 0, y: -20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 3 * 0.1 }}
-                >
-                    <Link href="#contact">
-                        <span className="text-primary">04. </span>
-                        Contact
-                    </Link>
-                </motion.li>
+                {navigation.map((item, index) => (
+                    <motion.li
+                        key={index}
+                        className="text-center cursor-pointer hover:text-primary "
+                        initial={{ opacity: 0, y: -20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5, delay: 0 * 0.1 }}
+                    >
+                        <Link href={`#${item.toLowerCase()}`}>
+                            <span className="text-primary">{`0${
+                                index + 1
+                            }. `}</span>
+                            {item}
+                        </Link>
+                    </motion.li>
+                ))}
+
                 <motion.li
                     initial={{ opacity: 0, y: -20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 4 * 0.1 }}
                 >
                     <Link
-                        href={""}
+                        href="https://docs.google.com/document/d/1b-vQpI4ZysCIC9drfdGRJiey6_QOCTXX/edit?usp=drivesdk&ouid=102200615451025195571&rtpof=true&sd=true"
+                        target="_blank"
                         className="my-4 inline-block bg-primary rounded-[4px]"
                     >
                         <button className="border border-primary text-primary text-sm py-2 px-3 rounded-[4px] hover:-translate-x-[6px] hover:-translate-y-[6px] bg-background duration-300">
@@ -150,8 +131,13 @@ const Header = () => {
                                 </Link>
                             </li>
                             <li className="text-center cursor-pointer hover:text-primary transition-all duration-300 hover:-translate-y-1">
-                                <div className="text-primary">02.</div>
-                                Experience
+                                <Link
+                                    href="#experience"
+                                    onClick={() => setOpenMenu(false)}
+                                >
+                                    <div className="text-primary">02.</div>
+                                    Experience
+                                </Link>
                             </li>
                             <li className="text-center cursor-pointer hover:text-primary transition-all duration-300 hover:-translate-y-1">
                                 <div className="text-primary">03.</div>
@@ -167,7 +153,9 @@ const Header = () => {
                                 </Link>
                             </li>
                             <li>
-                                <CustomButton>Resume</CustomButton>
+                                <CustomButton href="https://docs.google.com/document/d/1b-vQpI4ZysCIC9drfdGRJiey6_QOCTXX/edit?usp=drivesdk&ouid=102200615451025195571&rtpof=true&sd=true">
+                                    Resume
+                                </CustomButton>
                             </li>
                         </ol>
                     </nav>

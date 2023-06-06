@@ -64,7 +64,9 @@ const Hero = () => {
                     }
                     transition={{ duration: 0.5, delay: 10 * 0.1 }}
                 >
-                    <CustomButton>Check out my resume!</CustomButton>
+                    <CustomButton href="https://docs.google.com/document/d/1b-vQpI4ZysCIC9drfdGRJiey6_QOCTXX/edit?usp=drivesdk&ouid=102200615451025195571&rtpof=true&sd=true">
+                        Check out my resume!
+                    </CustomButton>
                 </motion.div>
             </div>
         </section>
