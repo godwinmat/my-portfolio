@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import { roboto } from "../utils/fonts";
 import { useInView } from "react-intersection-observer";
 
-const Hero = () => {
+const Hero = ({ fullname = "", resume = "", heroDescription = "" }) => {
     const [ref, inView] = useInView();
 
     return (
@@ -30,7 +30,7 @@ const Hero = () => {
                     }
                     transition={{ duration: 0.5, delay: 7 * 0.1 }}
                 >
-                    Matthew Godwin.
+                    {fullname}.
                 </motion.h1>
                 <motion.h1
                     className="text-gray-400 font-bold text-head-resp leading-[1]"
@@ -51,10 +51,7 @@ const Hero = () => {
                     }
                     transition={{ duration: 0.5, delay: 9 * 0.1 }}
                 >
-                    I'm a skilled software engineer with a passion for crafting
-                    outstanding digital solutions. From web development to
-                    application design, I bring creativity and technical
-                    expertise to every project.
+                    {heroDescription}
                 </motion.p>
 
                 <motion.div
@@ -64,7 +61,7 @@ const Hero = () => {
                     }
                     transition={{ duration: 0.5, delay: 10 * 0.1 }}
                 >
-                    <CustomButton href="https://docs.google.com/document/d/1b-vQpI4ZysCIC9drfdGRJiey6_QOCTXX/edit?usp=drivesdk&ouid=102200615451025195571&rtpof=true&sd=true">
+                    <CustomButton href={resume}>
                         Check out my resume!
                     </CustomButton>
                 </motion.div>

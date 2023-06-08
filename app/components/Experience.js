@@ -5,38 +5,8 @@ import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { roboto } from "../utils/fonts";
 
-const Experience = () => {
+const Experience = ({ experiences = [] }) => {
     const { inView, ref } = useInView({ triggerOnce: true });
-
-    const experiences = [
-        {
-            title: "African Blockchain Gaming Coach",
-            company: "Merit Circle DAO",
-            location: "Remote",
-            date: "January 2022 - March 2022",
-            roles: [
-                "Coached African blockchain gaming enthusiasts and provided technical support to improve their gaming experience.",
-            ],
-        },
-        {
-            title: "React Developer",
-            company: "CosmoTechnologies",
-            location: "Remote",
-            date: "May 2022 - July 2022",
-            roles: [
-                "Developed and maintained high-quality, responsive web applications using React.",
-            ],
-        },
-        {
-            title: "React Native Developer",
-            company: "Housee International",
-            location: "Remote",
-            date: "July 2022 - Dec 2022",
-            roles: [
-                "Worked on the development of a real estate application for property owners and tenants using React Native.",
-            ],
-        },
-    ];
 
     const [active, setActive] = useState(0);
     let activeExperience = experiences[active];
@@ -66,7 +36,7 @@ const Experience = () => {
             <motion.div className="w-full flex flex-col sm:flex-row space-x-5 text-slate-400 my-10">
                 <div className="overflow-x-scroll sm:overflow-x-visible">
                     <ul className="flex flex-row sm:flex-col">
-                        {experiences.map((exp, index) => (
+                        {experiences?.map((exp, index) => (
                             <li
                                 key={index}
                                 className={`${
@@ -102,19 +72,19 @@ const Experience = () => {
                                 <span className="text-primary ">
                                     @{" "}
                                     <span className="hover:underline cursor-pointer">
-                                        {activeExperience.company}
+                                        {activeExperience?.company}
                                     </span>
                                 </span>
                             </h2>
                             <p
                                 className={`${roboto.className} text-xs text-gray-500 pb-4 pt-2`}
                             >
-                                {activeExperience.date} |{" "}
-                                {activeExperience.location}
+                                {activeExperience?.date} |{" "}
+                                {activeExperience?.location}
                             </p>
                             <ul className="">
                                 {activeExperience.roles.map((role, index) => (
-                                    <li className="flex mb-3">
+                                    <li key={index} className="flex mb-3">
                                         <span className="text-primary pr-3">
                                             ▹
                                         </span>

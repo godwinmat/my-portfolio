@@ -1,6 +1,6 @@
-export const links = {
+export const socialLinks = {
     name: "links",
-    title: "Links",
+    title: "Social Links",
     type: "document",
     fields: [
         {
@@ -11,7 +11,7 @@ export const links = {
         {
             name: "url",
             title: "URL",
-            type: "string",
+            type: "url",
         },
     ],
 };

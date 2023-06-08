@@ -4,6 +4,11 @@ export const profile = {
     type: "document",
     fields: [
         {
+            name: "fullname",
+            title: "Full Name",
+            type: "string",
+        },
+        {
             name: "image",
             title: "Image",
             type: "image",
@@ -14,19 +19,29 @@ export const profile = {
             type: "email",
         },
         {
-            name: "hero_description",
-            title: "Hero Description",
-            type: "string",
+            name: "resume",
+            title: "Resume",
+            type: "url",
         },
         {
-            name: "about_me_description",
-            title: "About Me Description",
-            type: "string",
+            name: "hero_description",
+            title: "Hero Description",
+            type: "text",
+        },
+        {
+            name: "about_me_paragraph1",
+            title: "About Me Paragraph 1",
+            type: "text",
+        },
+        {
+            name: "about_me_paragraph2",
+            title: "About Me Paragraph 2",
+            type: "text",
         },
         {
             name: "contact_description",
             title: "Contact Description",
-            type: "string",
+            type: "text",
         },
     ],
 };

@@ -5,10 +5,16 @@ import { useEffect, useState } from "react";
 import { roboto } from "../utils/fonts";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import { urlForImage } from "@/sanity/lib/image";
 
-const AboutMe = () => {
-    const [technologies, setTechnologies] = useState([]);
+const AboutMe = ({
+    technologies = [],
+    paragraph1 = "",
+    paragraph2 = "",
+    image = "",
+}) => {
     const [ref, inView] = useInView({ triggerOnce: true });
+    const imageURL = urlForImage(image);
     // const technologies = [
     //     "Python",
     //     "JavaScript",
@@ -26,23 +32,6 @@ const AboutMe = () => {
     //     "OpenAI API Integration",
     //     "Discord.js",
     // ];
-
-    async function getSkills() {
-        const response = await fetch("/api/skills", {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json",
-            },
-        });
-
-        const { skills } = await response.json();
-
-        setTechnologies(skills);
-    }
-
-    useEffect(() => {
-        getSkills();
-    }, []);
 
     return (
         <section
@@ -78,15 +67,7 @@ const AboutMe = () => {
                         }
                         transition={{ duration: 0.5, delay: 1 * 0.1 }}
                     >
-                        Hello, I'm Matthew, a passionate and dedicated web
-                        developer from Nigeria. I'm currently pursuing a B.Sc in
-                        Computer Science at the National Open University of
-                        Nigeria. With a strong enthusiasm for creating
-                        captivating digital experiences, I strive to deliver
-                        innovative solutions that leave a lasting impression. I
-                        have almost 3 years of experience in Python, React,
-                        React Native, Nodejs, MongoDB, and other related
-                        technologies.
+                        {paragraph1}
                     </motion.p>
                     <motion.p
                         className="py-3"
@@ -98,13 +79,7 @@ const AboutMe = () => {
                         }
                         transition={{ duration: 0.5, delay: 2 * 0.1 }}
                     >
-                        My interest in coding started in 2020 during the
-                        COVID-19 lockdown when I decided to embark on a journey
-                        to learn Python. Little did I know, this exploration
-                        opened up a world of endless possibilities and ignited
-                        my passion for web development. Since then, I have been
-                        on an exciting path, continuously expanding my skills
-                        and knowledge in the ever-evolving field of coding
+                        {paragraph2}
                     </motion.p>
                     <motion.p
                         className="py-3"
@@ -116,7 +91,7 @@ const AboutMe = () => {
                         }
                         transition={{ duration: 0.5, delay: 3 * 0.1 }}
                     >
-                        Here are a few technologies I’ve been working with
+                        Here are a few technologies I've been working with
                         recently:
                     </motion.p>
                     <motion.ul
@@ -147,7 +122,7 @@ const AboutMe = () => {
                         <div className="w-full h-full cursor-pointer relative -translate-x-3 -translate-y-3 hover:-translate-x-5 hover:-translate-y-5 transition-all duration-200">
                             <div className="absolute w-full h-full bg-primary/70 rounded-md hover:bg-transparent transition-all duration-100 cursor-pointer" />
                             <Image
-                                src="/assets/my-pic.jpg"
+                                src={imageURL?.url()}
                                 width={300}
                                 height={300}
                                 className="rounded-[4px] w-full h-full object-cover"

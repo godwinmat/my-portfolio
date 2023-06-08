@@ -1,34 +1,43 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, createContext } from "react";
 import Header from "./Header";
 import Loading from "./Loading";
 import EmailComponent from "./EmailComponent";
 import SocialComponent from "./SocialComponent";
 
+export const ProfileContext = createContext();
+
 const EntryComponent = ({ children }) => {
-    const [loading, setLoading] = useState(true);
+    const [data, setData] = useState(null);
+
+    async function getData() {
+        const response = await fetch("/api/data", {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+            },
+        });
+
+        const data = await response.json();
+
+        setData(data);
+    }
 
     useEffect(() => {
-        const timeout = setTimeout(() => {
-            setLoading(false);
-        }, 2000);
-
-        return () => {
-            clearTimeout(timeout);
-        };
+        getData();
     }, []);
 
-    if (loading) return <Loading />;
+    if (!data) return <Loading />;
 
     return (
-        <>
+        <ProfileContext.Provider value={data}>
             <Header />
             {children}
 
-            <EmailComponent />
-            <SocialComponent />
-        </>
+            <EmailComponent email={data?.profile?.email} />
+            <SocialComponent links={data?.links} />
+        </ProfileContext.Provider>
     );
 };
 

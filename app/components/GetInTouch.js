@@ -9,32 +9,8 @@ import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { BsWhatsapp } from "react-icons/bs";
 
-const GetInTouch = () => {
+const GetInTouch = ({ description, email, links, fullname }) => {
     const [ref, inView] = useInView();
-    const [links, setLinks] = useState({});
-
-    async function getLinks() {
-        const response = await fetch("/api/links", {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json",
-            },
-        });
-
-        const { links } = await response.json();
-
-        let newLinks = {};
-
-        links?.forEach((link) => {
-            newLinks[link.title] = { id: link.id, url: link.url };
-        });
-
-        setLinks(newLinks);
-    }
-
-    useEffect(() => {
-        getLinks();
-    }, []);
 
     return (
         <section
@@ -65,13 +41,9 @@ const GetInTouch = () => {
                 animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
                 transition={{ duration: 0.7, delay: 2 * 0.2 }}
             >
-                I am currently looking for new opportunities. If you have any,
-                my inbox is always open. Whether you have a question or just
-                want to say hi, I'll try my best to get back to you!
+                {description}
             </motion.p>
-            <CustomButton href="mailto:gem3954@gmail.com">
-                Say Hello
-            </CustomButton>
+            <CustomButton href={`mailto:${email}`}>Say Hello</CustomButton>
             <motion.div
                 className="mt-20 flex flex-col items-center"
                 initial={{ opacity: 0, y: 40 }}
@@ -79,46 +51,53 @@ const GetInTouch = () => {
                 transition={{ duration: 0.7, delay: 3 * 0.2 }}
             >
                 <ul className="flex md:hidden items-center space-x-10 pb-5">
-                    <li>
-                        <Link
-                            href={links?.["GitHub"]?.url || ""}
-                            target="_blank"
-                        >
-                            <FiGithub className="text-slate-400 text-xl cursor-pointer hover:text-primary hover:-translate-y-2 transition-all duration-500" />
-                        </Link>
-                    </li>
-                    <li>
-                        <Link
-                            href={links?.["Twitter"]?.url || ""}
-                            target="_blank"
-                        >
-                            <FiTwitter className="text-slate-400 text-xl cursor-pointer hover:text-primary hover:-translate-y-2 transition-all duration-500" />
-                        </Link>
-                    </li>
-                    <li>
-                        <Link
-                            href={links?.["LinkedIn"]?.url || ""}
-                            target="_blank"
-                        >
-                            <FiLinkedin className="text-slate-400 text-xl cursor-pointer hover:text-primary hover:-translate-y-2 transition-all duration-500" />
-                        </Link>
-                    </li>
-                    <li>
-                        <Link
-                            href={links?.["Instagram"]?.url || ""}
-                            target="_blank"
-                        >
-                            <FiInstagram className="text-slate-400 text-xl cursor-pointer hover:text-primary hover:-translate-y-2 transition-all duration-500" />
-                        </Link>
-                    </li>
-                    <li>
-                        <Link
-                            href={links?.["Whatsapp"]?.url || ""}
-                            target="_blank"
-                        >
-                            <BsWhatsapp className="text-slate-400 text-xl cursor-pointer hover:text-primary hover:-translate-y-2 transition-all duration-500" />
-                        </Link>
-                    </li>
+                    {links?.["GitHub"]?.url && (
+                        <li>
+                            <Link href={links?.["GitHub"]?.url} target="_blank">
+                                <FiGithub className="text-slate-400 text-xl cursor-pointer hover:text-primary hover:-translate-y-2 transition-all duration-500" />
+                            </Link>
+                        </li>
+                    )}
+                    {links?.["Twitter"]?.url && (
+                        <li>
+                            <Link
+                                href={links?.["Twitter"]?.url}
+                                target="_blank"
+                            >
+                                <FiTwitter className="text-slate-400 text-xl cursor-pointer hover:text-primary hover:-translate-y-2 transition-all duration-500" />
+                            </Link>
+                        </li>
+                    )}
+                    {links?.["LinkedIn"]?.url && (
+                        <li>
+                            <Link
+                                href={links?.["LinkedIn"]?.url}
+                                target="_blank"
+                            >
+                                <FiLinkedin className="text-slate-400 text-xl cursor-pointer hover:text-primary hover:-translate-y-2 transition-all duration-500" />
+                            </Link>
+                        </li>
+                    )}
+                    {links?.["Instagram"]?.url && (
+                        <li>
+                            <Link
+                                href={links?.["Instagram"]?.url}
+                                target="_blank"
+                            >
+                                <FiInstagram className="text-slate-400 text-xl cursor-pointer hover:text-primary hover:-translate-y-2 transition-all duration-500" />
+                            </Link>
+                        </li>
+                    )}
+                    {links?.["Whatsapp"]?.url && (
+                        <li>
+                            <Link
+                                href={links?.["Whatsapp"]?.url}
+                                target="_blank"
+                            >
+                                <BsWhatsapp className="text-slate-400 text-xl cursor-pointer hover:text-primary hover:-translate-y-2 transition-all duration-500" />
+                            </Link>
+                        </li>
+                    )}
                 </ul>
                 <motion.p
                     className={`${roboto.className} text-slate-400 hover:text-primary cursor-pointer text-sm`}
@@ -128,7 +107,7 @@ const GetInTouch = () => {
                     }
                     transition={{ duration: 0.7, delay: 4 * 0.2 }}
                 >
-                    Built by Matthew Godwin
+                    Built by {fullname}
                 </motion.p>
                 <motion.p
                     className={`${roboto.className} text-slate-400 hover:text-[#64ffda] cursor-pointer text-sm`}
