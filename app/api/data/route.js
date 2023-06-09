@@ -1,5 +1,6 @@
 import { sanityClient } from "@/sanity/lib/client";
 import { groq } from "next-sanity";
+import { revalidatePath } from "next/cache";
 import { NextResponse } from "next/server";
 
 const profileQuery = groq`
@@ -58,6 +59,7 @@ export async function GET() {
             experiences,
         };
 
+        revalidatePath("/data");
         return NextResponse.json(data);
     } catch (error) {
         return NextResponse.json({
