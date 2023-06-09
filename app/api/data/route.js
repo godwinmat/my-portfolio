@@ -36,7 +36,7 @@ const linksQuery = groq`
     *[_type == "links"]
 `;
 
-export async function GET() {
+export async function GET(request) {
     try {
         const profile = await sanityClient.fetch(profileQuery);
         const skills = await sanityClient.fetch(skillsQuery);
@@ -59,7 +59,10 @@ export async function GET() {
             experiences,
         };
 
-        revalidatePath("/data");
+        const path = request.nextUrl.searchParams.get("path") || "/";
+
+        revalidatePath(path);
+
         return NextResponse.json(data);
     } catch (error) {
         return NextResponse.json({
