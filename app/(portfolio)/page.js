@@ -1,11 +1,11 @@
 "use client";
 
-import Hero from "./components/Hero";
-import AboutMe from "./components/AboutMe";
-import GetInTouch from "./components/GetInTouch";
-import Experience from "./components/Experience";
+import Hero from "../components/Hero";
+import AboutMe from "../components/AboutMe";
+import GetInTouch from "../components/GetInTouch";
+import Experience from "../components/Experience";
 import { useContext } from "react";
-import { ProfileContext } from "./components/EntryComponent";
+import { ProfileContext } from "../components/EntryComponent";
 
 export const revalidate = 10;
 

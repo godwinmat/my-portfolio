@@ -1,5 +1,5 @@
-import EntryComponent from "./components/EntryComponent";
-import "./globals.css";
+import EntryComponent from "../components/EntryComponent";
+import "../globals.css";
 import { Poppins } from "next/font/google";
 
 const poppins = Poppins({
