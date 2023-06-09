@@ -1,7 +1,7 @@
 import { sanityClient } from "@/sanity/lib/client";
 import { groq } from "next-sanity";
 import { revalidatePath } from "next/cache";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
 const profileQuery = groq`
     *[_type == "profile"][0]
@@ -59,7 +59,7 @@ export async function GET(request) {
             experiences,
         };
 
-        const path = request.nextUrl.searchParams.get("path") || "/";
+        const path = request?.nextUrl?.pathname;
 
         revalidatePath(path);
 

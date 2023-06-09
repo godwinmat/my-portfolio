@@ -122,7 +122,12 @@ const AboutMe = ({
                         <div className="w-full h-full cursor-pointer relative -translate-x-3 -translate-y-3 hover:-translate-x-5 hover:-translate-y-5 transition-all duration-200">
                             <div className="absolute w-full h-full bg-primary/70 rounded-md hover:bg-transparent transition-all duration-100 cursor-pointer" />
                             <Image
-                                src={imageURL?.url()}
+                                src={
+                                    imageURL?.url()
+                                        ? imageURL?.url()
+                                        : "/assets/my-pic.jpg"
+                                }
+                                // src={"/assets/my-pic.jpg"}
                                 width={300}
                                 height={300}
                                 className="rounded-[4px] w-full h-full object-cover"
