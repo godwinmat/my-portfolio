@@ -7,6 +7,7 @@ import Experience from "./components/Experience";
 import { useContext } from "react";
 import { ProfileContext } from "./components/EntryComponent";
 
+export const revalidate = 60;
 export default function Home() {
     const data = useContext(ProfileContext);
     const profile = data?.profile;

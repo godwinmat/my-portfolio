@@ -18,7 +18,7 @@ const EntryComponent = ({ children }) => {
                 headers: {
                     "Content-Type": "application/json",
                 },
-                next: { tags: ["portfolio"] },
+                next: { tags: ["portfolio"], revalidate: 0 },
             });
 
             const data = await response.json();
