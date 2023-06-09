@@ -12,17 +12,21 @@ const EntryComponent = ({ children }) => {
     const [data, setData] = useState(null);
 
     async function getData() {
-        const response = await fetch("/api/data", {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            next: { tags: ["portfolio"] },
-        });
+        try {
+            const response = await fetch("/api/data", {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                next: { revalidate: 60 },
+            });
 
-        const data = await response.json();
+            const data = await response.json();
 
-        setData(data);
+            setData(data);
+        } catch (error) {
+            console.log(error.message);
+        }
     }
 
     useEffect(() => {

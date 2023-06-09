@@ -1,7 +1,6 @@
 import { sanityClient } from "@/sanity/lib/client";
 import { groq } from "next-sanity";
-import { revalidatePath, revalidateTag } from "next/cache";
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 
 const profileQuery = groq`
     *[_type == "profile"][0]
@@ -59,15 +58,8 @@ export async function GET(request) {
             experiences,
         };
 
-        // const tag = request?.nextUrl?.searchParams.get("tags");
-        // console.log(tag);
-        // new NextRequest().nextUrl.
-        revalidateTag("portfolio");
-
         return NextResponse.json(data);
     } catch (error) {
-        return NextResponse.json({
-            error: error?.message,
-        });
+        return NextResponse.error();
     }
 }
