@@ -14,11 +14,11 @@ const EntryComponent = ({ children }) => {
     async function getData() {
         try {
             const response = await fetch("/api/data", {
-                method: "GET",
+                method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                 },
-                next: { tags: ["portfolio"], revalidate: 0 },
+                // next: { tags: ["portfolio"], revalidate: 10 },
             });
 
             const data = await response.json();

@@ -35,7 +35,7 @@ const linksQuery = groq`
     *[_type == "links"]
 `;
 
-export async function GET(request) {
+export async function POST() {
     try {
         const profile = await sanityClient.fetch(profileQuery);
         const skills = await sanityClient.fetch(skillsQuery);
