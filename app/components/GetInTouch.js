@@ -107,7 +107,7 @@ const GetInTouch = ({ description, email, links, fullname }) => {
                     }
                     transition={{ duration: 0.7, delay: 4 * 0.2 }}
                 >
-                    Built by {fullname}
+                    Built by {fullname} using Next.js
                 </motion.p>
                 <motion.p
                     className={`${roboto.className} text-slate-400 hover:text-[#64ffda] cursor-pointer text-sm`}
