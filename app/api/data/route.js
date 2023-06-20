@@ -28,7 +28,7 @@ const experienceQuery = groq`
 `;
 
 const projectsQuery = groq`
-   *[_type == "work"]
+   *[_type == "projects"]
 { _id,
   name, 
   technologies,
