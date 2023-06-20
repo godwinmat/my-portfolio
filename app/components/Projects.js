@@ -51,15 +51,22 @@ function Projects({ projects }) {
                                     {project?.technologies?.join(" ")}
                                 </p>
                                 <div className="flex space-x-5 my-6">
-                                    <Link
-                                        href={project?.github}
-                                        target="_blank"
-                                    >
-                                        <FiGithub size={23} />
-                                    </Link>
-                                    <Link href={project?.url} target="_blank">
-                                        <TbExternalLink size={23} />
-                                    </Link>
+                                    {project?.github && (
+                                        <Link href={project?.github}>
+                                            <FiGithub
+                                                size={23}
+                                                target="_blank"
+                                            />
+                                        </Link>
+                                    )}
+                                    {project?.url && (
+                                        <Link
+                                            href={project?.url}
+                                            target="_blank"
+                                        >
+                                            <TbExternalLink size={23} />
+                                        </Link>
+                                    )}
                                 </div>
                             </div>
                         </div>
@@ -91,12 +98,16 @@ function Projects({ projects }) {
                                     index % 2 === 0 ? "left" : "right"
                                 }`}
                             >
-                                <Link href={project?.github}>
-                                    <FiGithub size={23} target="_blank" />
-                                </Link>
-                                <Link href={project?.url} target="_blank">
-                                    <TbExternalLink size={23} />
-                                </Link>
+                                {project?.github && (
+                                    <Link href={project?.github}>
+                                        <FiGithub size={23} target="_blank" />
+                                    </Link>
+                                )}
+                                {project?.url && (
+                                    <Link href={project?.url} target="_blank">
+                                        <TbExternalLink size={23} />
+                                    </Link>
+                                )}
                             </div>
                         </motion.div>
                         <div
