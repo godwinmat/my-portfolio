@@ -15,7 +15,7 @@ const Header = () => {
     // console.log(pathname);
     const [openMenu, setOpenMenu] = useState(false);
     const [showShadow, setShowShadow] = useState(false);
-    const navigation = ["About", "Experience", "Work", "Contact"];
+    const navigation = ["About", "Experience", "Projects", "Contact"];
 
     useEffect(() => {
         let prevScrollPos = window.scrollY;
@@ -58,7 +58,7 @@ const Header = () => {
             id="header"
             className={`${roboto.className} ${
                 showShadow ? "header-shadow" : ""
-            } bg-background h-[70px] w-full fixed top-0 flex items-center px-9 sm:px-12 justify-between transition-all duration-500 z-[1]`}
+            } bg-background h-[70px] w-full fixed top-0 flex items-center px-9 sm:px-12 justify-between transition-all duration-500 z-[2]`}
         >
             <Image
                 src="/assets/logo2.png"

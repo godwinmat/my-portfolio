@@ -8,12 +8,11 @@ import Image from "next/image";
 import Link from "next/link";
 
 function Projects({ projects }) {
-    console.log(projects);
     const { inView, ref } = useInView({ triggerOnce: true });
 
     return (
         <section
-            id="work"
+            id="projects"
             className="md:px-10 lg:px-28 container flex flex-col justify-center items-center my-20"
         >
             <motion.div
@@ -77,7 +76,7 @@ function Projects({ projects }) {
                                 index % 2 === 0 ? "left" : "right"
                             }-0 text-${
                                 index % 2 === 0 ? "left" : "right"
-                            } w-[60%] z-10`}
+                            } w-[60%] z-[1]`}
                         >
                             <h3
                                 className={`${roboto.className} text-primary text-sm`}
