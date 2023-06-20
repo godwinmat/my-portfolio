@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useEffect, useState, createContext } from "react";
-import Header from "./Header";
 import Loading from "./Loading";
 import EmailComponent from "./EmailComponent";
 import SocialComponent from "./SocialComponent";
@@ -18,7 +17,6 @@ const EntryComponent = ({ children }) => {
                 headers: {
                     "Content-Type": "application/json",
                 },
-                // next: { tags: ["portfolio"], revalidate: 10 },
             });
 
             const data = await response.json();
@@ -37,7 +35,6 @@ const EntryComponent = ({ children }) => {
 
     return (
         <ProfileContext.Provider value={data}>
-            <Header />
             {children}
 
             <EmailComponent email={data?.profile?.email} />

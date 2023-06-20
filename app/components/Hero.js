@@ -10,7 +10,7 @@ const Hero = ({ fullname = "", resume = "", heroDescription = "" }) => {
     const [ref, inView] = useInView();
 
     return (
-        <section className="h-screen flex items-center px-10 sm:px-12 md:px-24 lg:px-36 container">
+        <section className="h-screen flex items-center md:px-20 container">
             <div>
                 <motion.p
                     className={`${roboto.className} text-primary text-small-resp py-2`}

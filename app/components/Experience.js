@@ -14,7 +14,7 @@ const Experience = ({ experiences = [] }) => {
     return (
         <section
             id="experience"
-            className="px-10 sm:px-12 md:px-24 lg:px-36 xl:px-56 container flex flex-col justify-center items-center my-20"
+            className="md:px-10 container flex flex-col justify-center items-center my-20"
         >
             <motion.div
                 ref={ref}
@@ -34,7 +34,7 @@ const Experience = ({ experiences = [] }) => {
                 <div className="flex-1 md:w-32  h-[1px] bg-white/20" />
             </motion.div>
             <motion.div className="w-full flex flex-col sm:flex-row space-x-5 text-slate-400 my-10">
-                <div className="overflow-x-scroll sm:overflow-x-visible">
+                <div className="overflow-x-scroll sm:overflow-x-visible scrollbar-hide hover:scrollbar-default transition-all duration-300">
                     <ul className="flex flex-row sm:flex-col">
                         {experiences?.map((exp, index) => (
                             <li

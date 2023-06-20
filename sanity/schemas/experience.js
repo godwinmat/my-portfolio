@@ -27,7 +27,7 @@ export const experience = {
             name: "roles",
             title: "Roles",
             type: "array",
-            of: [{ type: "string" }],
+            of: [{ type: "text" }],
             validation: (Rule) => Rule.unique(),
         },
     ],

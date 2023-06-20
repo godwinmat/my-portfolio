@@ -36,7 +36,7 @@ const AboutMe = ({
     return (
         <section
             id="about"
-            className="px-10 sm:px-12 md:px-24 lg:px-36 xl:px-56 min-h-screen container flex flex-col justify-center items-center"
+            className="md:px-10 container flex flex-col justify-center items-center my-20"
         >
             <motion.div
                 className="w-full flex items-center"

@@ -6,6 +6,8 @@ import GetInTouch from "../components/GetInTouch";
 import Experience from "../components/Experience";
 import { useContext } from "react";
 import { ProfileContext } from "../components/EntryComponent";
+import Header from "../components/Header";
+import Projects from "../components/Projects";
 
 export const revalidate = 10;
 
@@ -15,9 +17,11 @@ export default function Home() {
     const links = data?.links;
     const skills = data?.skills;
     const experiences = data?.experiences;
+    const projects = data?.projects;
 
     return (
-        <main className="absolute top-0 flex flex-col items-center w-full">
+        <main className="absolute top-0 flex flex-col items-center w-full px-12">
+            <Header />
             <Hero
                 fullname={profile?.fullname}
                 resume={profile?.resume}
@@ -30,6 +34,7 @@ export default function Home() {
                 image={profile?.image}
             />
             <Experience experiences={experiences} />
+            <Projects projects={projects} />
             <GetInTouch
                 links={links}
                 email={profile?.email}

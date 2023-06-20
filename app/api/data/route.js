@@ -27,6 +27,17 @@ const experienceQuery = groq`
 }
 `;
 
+const projectsQuery = groq`
+   *[_type == "work"]
+{ _id,
+  name, 
+  technologies,
+  github, 
+  url, 
+  description,
+}
+`;
+
 const skillsQuery = groq`
     *[_type == "skills"]
 `;
@@ -41,6 +52,7 @@ export async function POST() {
         const skills = await sanityClient.fetch(skillsQuery);
         const links = await sanityClient.fetch(linksQuery);
         const experiences = await sanityClient.fetch(experienceQuery);
+        const projects = await sanityClient.fetch(projectsQuery);
 
         let newLinks = {};
 
@@ -56,6 +68,7 @@ export async function POST() {
             })),
             profile,
             experiences,
+            projects,
         };
 
         return NextResponse.json(data);

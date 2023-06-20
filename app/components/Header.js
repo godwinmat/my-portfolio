@@ -6,10 +6,13 @@ import CustomButton from "./CustomButton";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { roboto } from "../utils/fonts";
-import { usePathname } from "next/navigation";
+import { scrollIntoTheView } from "../utils/scrollIntoView";
+// import { usePathname } from "next/navigation";
+// import { useRouter } from "next/router";
 
 const Header = () => {
-    const pathname = usePathname();
+    // const pathname = useRouter();
+    // console.log(pathname);
     const [openMenu, setOpenMenu] = useState(false);
     const [showShadow, setShowShadow] = useState(false);
     const navigation = ["About", "Experience", "Work", "Contact"];
@@ -84,13 +87,14 @@ const Header = () => {
                         initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5, delay: 0 * 0.1 }}
+                        onClick={() => scrollIntoTheView(item.toLowerCase())}
                     >
-                        <Link href={`#${item.toLowerCase()}`}>
+                        <p>
                             <span className="text-primary">{`0${
                                 index + 1
                             }. `}</span>
                             {item}
-                        </Link>
+                        </p>
                     </motion.li>
                 ))}
 
@@ -121,37 +125,20 @@ const Header = () => {
                     <div className="w-[30%] h-screen self-end bg-transparent" />
                     <nav className="w-[70%] h-screen bg-background flex justify-center items-center">
                         <ol className="text-slate-300 space-y-6 font-medium drawer-items">
-                            <li className="text-center cursor-pointer hover:text-primary transition-all duration-300 hover:-translate-y-1">
-                                <Link
-                                    href="#aboutme"
-                                    onClick={() => setOpenMenu(false)}
+                            {navigation.map((item, index) => (
+                                <li
+                                    className="text-center cursor-pointer hover:text-primary transition-all duration-300 hover:-translate-y-1"
+                                    onClick={() => {
+                                        setOpenMenu(false);
+                                        scrollIntoTheView(item.toLowerCase());
+                                    }}
                                 >
-                                    <div className="text-primary">01.</div>
-                                    About
-                                </Link>
-                            </li>
-                            <li className="text-center cursor-pointer hover:text-primary transition-all duration-300 hover:-translate-y-1">
-                                <Link
-                                    href="#experience"
-                                    onClick={() => setOpenMenu(false)}
-                                >
-                                    <div className="text-primary">02.</div>
-                                    Experience
-                                </Link>
-                            </li>
-                            <li className="text-center cursor-pointer hover:text-primary transition-all duration-300 hover:-translate-y-1">
-                                <div className="text-primary">03.</div>
-                                Work
-                            </li>
-                            <li className="text-center cursor-pointer hover:text-primary transition-all duration-300 hover:-translate-y-1">
-                                <Link
-                                    href="#contact"
-                                    onClick={() => setOpenMenu(false)}
-                                >
-                                    <div className="text-primary">04.</div>
-                                    Contact
-                                </Link>
-                            </li>
+                                    <div className="text-primary">{`0${
+                                        index + 1
+                                    }.`}</div>
+                                    {item}
+                                </li>
+                            ))}
                             <li>
                                 <CustomButton href="https://docs.google.com/document/d/1b-vQpI4ZysCIC9drfdGRJiey6_QOCTXX/edit?usp=drivesdk&ouid=102200615451025195571&rtpof=true&sd=true">
                                     Resume
