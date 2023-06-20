@@ -7,12 +7,8 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { roboto } from "../utils/fonts";
 import { scrollIntoTheView } from "../utils/scrollIntoView";
-// import { usePathname } from "next/navigation";
-// import { useRouter } from "next/router";
 
 const Header = () => {
-    // const pathname = useRouter();
-    // console.log(pathname);
     const [openMenu, setOpenMenu] = useState(false);
     const [showShadow, setShowShadow] = useState(false);
     const navigation = ["About", "Experience", "Projects", "Contact"];
