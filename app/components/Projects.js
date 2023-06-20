@@ -13,7 +13,7 @@ function Projects({ projects }) {
     return (
         <section
             id="projects"
-            className="md:px-10 lg:px-28 container flex flex-col justify-center items-center my-20"
+            className="md:px-10 lg:px-28 container flex flex-col justify-center items-center my-40"
         >
             <motion.div
                 ref={ref}
@@ -33,40 +33,32 @@ function Projects({ projects }) {
                 <div className="flex-1 md:w-32  h-[1px] bg-white/20" />
             </motion.div>
             {projects?.map((project, index) => (
-                <div className="md:flex md:relative md:items-center my-10 w-full h-96">
+                <div className="md:flex md:relative md:items-center my-10 w-full">
                     <motion.div className="relative w-full h-full cursor-pointer rounded-sm shadow-lg bg-[url('/assets/emmz.jpg')] bg-cover bg-center md:hidden">
-                        <div className="absolute top-0 bottom-0 left-0 right-0 rounded-sm bg-background/90 text-slate-400 p-10">
-                            <div className="">
-                                <h3
-                                    className={`${roboto.className} text-primary text-sm`}
-                                >
-                                    Featured Project
-                                </h3>
-                                <h1 className="text-white font-semibold text-2xl pt-1">
-                                    {project?.name}
-                                </h1>
-                                <p className="py-6">{project?.description}</p>
-                                <p className={`${roboto.className} text-sm`}>
-                                    {project?.technologies?.join(" ")}
-                                </p>
-                                <div className="flex space-x-5 my-6">
-                                    {project?.github && (
-                                        <Link href={project?.github}>
-                                            <FiGithub
-                                                size={23}
-                                                target="_blank"
-                                            />
-                                        </Link>
-                                    )}
-                                    {project?.url && (
-                                        <Link
-                                            href={project?.url}
-                                            target="_blank"
-                                        >
-                                            <TbExternalLink size={23} />
-                                        </Link>
-                                    )}
-                                </div>
+                        <div className="w-full h-full rounded-sm bg-background/90 text-slate-400 p-5">
+                            <h3
+                                className={`${roboto.className} text-primary text-sm`}
+                            >
+                                Featured Project
+                            </h3>
+                            <h1 className="text-white font-semibold text-2xl pt-1">
+                                {project?.name}
+                            </h1>
+                            <p className="py-6">{project?.description}</p>
+                            <p className={`${roboto.className} text-sm`}>
+                                {project?.technologies?.join(" ")}
+                            </p>
+                            <div className="flex space-x-5 my-6">
+                                {project?.github && (
+                                    <Link href={project?.github}>
+                                        <FiGithub size={23} target="_blank" />
+                                    </Link>
+                                )}
+                                {project?.url && (
+                                    <Link href={project?.url} target="_blank">
+                                        <TbExternalLink size={23} />
+                                    </Link>
+                                )}
                             </div>
                         </div>
                     </motion.div>

@@ -20,7 +20,7 @@ export default function Home() {
     const projects = data?.projects;
 
     return (
-        <main className="absolute top-0 flex flex-col items-center w-full px-12">
+        <main className="absolute top-0 flex flex-col items-center w-full px-5 md:px-10">
             <Header />
             <Hero
                 fullname={profile?.fullname}

@@ -100,7 +100,7 @@ const GetInTouch = ({ description, email, links, fullname }) => {
                     )}
                 </ul>
                 <motion.p
-                    className={`${roboto.className} text-slate-400 hover:text-primary cursor-pointer text-sm`}
+                    className={`${roboto.className} text-center text-slate-400 hover:text-primary cursor-pointer text-sm`}
                     initial={{ opacity: 0, y: 40 }}
                     animate={
                         inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }
