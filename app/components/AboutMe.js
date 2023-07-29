@@ -15,6 +15,7 @@ const AboutMe = ({
 }) => {
     const [ref, inView] = useInView({ triggerOnce: true });
     const imageURL = urlForImage(image);
+
     // const technologies = [
     //     "Python",
     //     "JavaScript",

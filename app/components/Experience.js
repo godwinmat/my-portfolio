@@ -68,7 +68,7 @@ const Experience = ({ experiences = [] }) => {
                     <div className="flex flex-col space-y-4">
                         <div className="p-2">
                             <h2 className="text-lg font-semibold">
-                                {activeExperience.title}{" "}
+                                {activeExperience?.title}{" "}
                                 <span className="text-primary ">
                                     @{" "}
                                     <span className="hover:underline cursor-pointer">
@@ -83,7 +83,7 @@ const Experience = ({ experiences = [] }) => {
                                 {activeExperience?.location}
                             </p>
                             <ul className="">
-                                {activeExperience.roles.map((role, index) => (
+                                {activeExperience?.roles.map((role, index) => (
                                     <li key={index} className="flex mb-3">
                                         <span className="text-primary pr-3">
                                             ▹
