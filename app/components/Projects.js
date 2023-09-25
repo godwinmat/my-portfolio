@@ -6,6 +6,7 @@ import { TbExternalLink } from "react-icons/tb";
 import { FiGithub } from "react-icons/fi";
 import Image from "next/image";
 import Link from "next/link";
+import { urlForImage } from "@/sanity/lib/image";
 
 function Projects({ projects }) {
     const { inView, ref } = useInView({ triggerOnce: true });
@@ -34,8 +35,17 @@ function Projects({ projects }) {
             </motion.div>
             {projects?.map((project, index) => (
                 <div className="md:flex md:relative md:items-center my-10 w-full">
-                    <motion.div className="relative w-full h-full cursor-pointer rounded-sm shadow-lg bg-[url('/assets/emmz.jpg')] bg-cover bg-center md:hidden">
-                        <div className="w-full h-full rounded-sm bg-background/90 text-slate-400 p-5">
+                    <motion.div
+                        className={`relative w-full h-72 cursor-pointer rounded-sm shadow-lg md:hidden`}
+                    >
+                        {urlForImage(project?.image)?.url() && (
+                            <Image
+                                fill
+                                src={urlForImage(project?.image)?.url()}
+                                className="object-cover"
+                            />
+                        )}
+                        <div className="absolute w-full h-full rounded-sm bg-background/90 text-slate-400 p-5">
                             <h3
                                 className={`${roboto.className} text-primary text-sm`}
                             >
@@ -62,7 +72,7 @@ function Projects({ projects }) {
                             </div>
                         </div>
                     </motion.div>
-                    <div className="hidden md:flex relative w-full h-full items-center">
+                    <div className="hidden md:flex relative w-full h-72 items-center">
                         <motion.div
                             className={`hidden md:block text-slate-400 absolute ${
                                 index % 2 === 0 ? "left" : "right"
@@ -107,12 +117,14 @@ function Projects({ projects }) {
                             }-0 rounded-[4px] max-w-[60%] h-auto`}
                         >
                             <div className="absolute w-full h-full bg-primary/40 rounded-md hover:bg-transparent transition-all duration-100 cursor-pointer" />
-                            <Image
-                                src="/assets/emmz.jpg"
-                                width={500}
-                                height={500}
-                                className="rounded-[4px] w-full h-full bg-cover bg-center"
-                            />
+                            {urlForImage(project?.image)?.url() && (
+                                <Image
+                                    src={urlForImage(project?.image)?.url()}
+                                    width={500}
+                                    height={500}
+                                    className="rounded-[4px] w-full h-full bg-cover bg-center"
+                                />
+                            )}
                         </div>
                     </div>
                 </div>

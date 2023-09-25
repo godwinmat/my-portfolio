@@ -9,6 +9,18 @@ export const projects = {
             type: "string",
         },
         {
+            name: "image",
+            type: "image",
+            title: "Image",
+            fields: [
+                {
+                    name: "alt",
+                    type: "string",
+                    title: "Alternative text",
+                },
+            ],
+        },
+        {
             name: "description",
             title: "Description",
             type: "text",

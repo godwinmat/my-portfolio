@@ -35,6 +35,7 @@ const projectsQuery = groq`
   github, 
   url, 
   description,
+  image
 }
 `;
 
